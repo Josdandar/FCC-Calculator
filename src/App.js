@@ -3,8 +3,25 @@ import Josdandarlogo from "./images/josdanda-logo.png"
 import Button from './components/Button';
 import Display from './components/Display';
 import ClearButton from './components/ClearButton';
+import { useState } from "react";
+import { evaluate } from "mathjs"; 
 
 function App() {
+
+  const [input, setInput] = useState(''); /*Creating state if we update with setInput it will update on display as well*/
+
+  const addInput = value => {
+    setInput(input + value);
+  };
+
+  const calculateResult = () =>{
+    if(input){ //empty strings are falsy
+      setInput(evaluate(input));
+    }else{
+      alert("PLEASE TYPE A VALUE TO CONTINUE...")
+    }
+  };
+
   return (
     <div className="App">
       <div className='logo-container'>
@@ -14,33 +31,35 @@ function App() {
         alt="Logo to show" />
       </div>
       <div className="calculator-container">
-        <Display />
+        <Display input={input}/>
         <div className="line">
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-          <Button>+</Button>
+          <Button handleClick={addInput}>1</Button>
+          <Button handleClick={addInput}>2</Button>
+          <Button handleClick={addInput}>3</Button>
+          <Button handleClick={addInput}>+</Button>
         </div>
         <div className="line">
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>-</Button>
+          <Button handleClick={addInput}>4</Button>
+          <Button handleClick={addInput}>5</Button>
+          <Button handleClick={addInput}>6</Button>
+          <Button handleClick={addInput}>-</Button>
         </div>
         <div className="line">
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>*</Button>
+          <Button handleClick={addInput}>7</Button>
+          <Button handleClick={addInput}>8</Button>
+          <Button handleClick={addInput}>9</Button>
+          <Button handleClick={addInput}>*</Button>
         </div>
         <div className="line">
-          <Button>=</Button>
-          <Button>0</Button>
-          <Button>.</Button>
-          <Button>/</Button>
+          <Button handleClick={calculateResult}>=</Button>
+          <Button handleClick={addInput}>0</Button>
+          <Button handleClick={addInput}>.</Button>
+          <Button handleClick={addInput}>/</Button>
         </div>
         <div className='line'>
-          <ClearButton>Clear</ClearButton>
+          <ClearButton handleClear={() => setInput('')}>
+            Clear
+          </ClearButton>
         </div>
       </div>
     </div>
@@ -48,3 +67,5 @@ function App() {
 }
 
 export default App;
+
+/*Challenge, create logo component */ 
