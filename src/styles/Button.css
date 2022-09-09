@@ -1,0 +1,29 @@
+.button-container{
+  height: 83px;
+  flex: 1 1; /* Distributes proportionally with thw width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 38px;
+  background-color: #1b1b32;
+  color: white;
+  border-radius: 25px;
+  border: 2px Solid white;
+  margin: 4px;
+  cursor: pointer; /*Turns the mouse to a hand while hovering */
+  user-select: none; /*Makes the text not available to select with the mouse */
+}
+
+.button-container:hover{
+  background-color: #5a01a7;
+}
+
+.operator{
+  background-color: #00471b;
+
+}
+
+.operator:hover{
+  background-color: #ff6600;
+}
